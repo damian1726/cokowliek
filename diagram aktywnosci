@@ -1,0 +1,46 @@
+```mermaid
+flowchart TD
+    A((START)) --> B[Uruchomienie gry]
+    B --> C[Wyświetlenie menu głównego]
+    C --> D{Czy gracz wybiera START?}
+    D -->|Nie| C
+    D -->|Tak| E[Wczytanie poziomu 1]
+
+    E --> F[Rozpoczęcie rozgrywki]
+    F --> G[Poruszanie bohaterem klawiszami W A S D]
+    G --> H{Kolizja ze ścianą?}
+    H -->|Tak| G
+    H -->|Nie| I{Czy zebrano monetę?}
+    I -->|Tak| J[Dodanie punktów]
+    I -->|Nie| K{Czy znaleziono klucz?}
+    J --> K
+    K -->|Tak| L[Zapisanie klucza]
+    K -->|Nie| M[Sprawdzenie życia gracza]
+    L --> M
+    M --> N{Czy gracz ma jeszcze życia?}
+    N -->|Nie| R[Przegrana]
+    N -->|Tak| O{Czy dotarto do drzwi?}
+    O -->|Nie| G
+    O -->|Tak| P{Czy gracz ma klucz?}
+    P -->|Nie| G
+    P -->|Tak| Q{Który poziom?}
+
+    Q -->|Poziom 1| S[Ukończenie poziomu 1]
+    S --> T[Wczytanie poziomu 2]
+    T --> U[Labirynt z ruchomymi przeszkodami]
+    U --> G
+
+    Q -->|Poziom 2| V[Ukończenie poziomu 2]
+    V --> W[Wczytanie poziomu 3]
+    W --> X[Uruchomienie limitu czasu]
+    X --> Y[Labirynt z przeciwnikiem]
+    Y --> Z{Czy czas się skończył?}
+    Z -->|Tak| R
+    Z -->|Nie| G
+
+    Q -->|Poziom 3| AA[Ukończenie poziomu 3]
+    AA --> AB[Wyświetlenie ekranu zwycięstwa]
+    AB --> AC((KONIEC))
+
+    R --> AD[Wyświetlenie ekranu przegranej]
+    AD --> AC
