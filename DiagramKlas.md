@@ -1,5 +1,7 @@
 ```mermaid
 classDiagram
+    direction TB
+
     class Gra {
         -int aktualnyPoziom
         -bool czyWygrana
@@ -16,16 +18,20 @@ classDiagram
         +ukonczPoziom()
     }
 
-    class Bohater {
-        -int zycia
-        -int punkty
-        -bool maKlucz
-        -float predkosc
-        +poruszaj(klawisz)
-        +zbierzMonete()
-        +zbierzKlucz()
-        +stracZycie()
-        +wrocNaStart()
+    class LicznikPunktow {
+        -int wartosc
+        +dodaj(punkty)
+    }
+
+    class LicznikZycia {
+        -int wartosc
+        +odejmij()
+    }
+
+    class LicznikCzasu {
+        -float pozostalyCzas
+        +uruchom()
+        +czyKoniec() bool
     }
 
     class ObiektGry {
@@ -35,57 +41,37 @@ classDiagram
         +wykryjKolizje()
     }
 
+    class Bohater {
+        -int zycia
+        -int punkty
+        -bool maKlucz
+        +poruszaj(klawisz)
+        +stracZycie()
+    }
+
     class Sciana
     class Moneta {
         -int wartosc
-        +zostanZebrana()
     }
-
-    class Klucz {
-        +zostanZebrany()
-    }
-
+    class Klucz
     class Drzwi {
         -bool otwarte
         +otworz()
     }
-
     class Przeszkoda {
         -float predkosc
         +poruszaj()
     }
-
     class Przeciwnik {
-        -float predkosc
         +gon()
-        +poruszaj()
     }
 
-    class LicznikPunktow {
-        -int wartosc
-        +dodaj(punkty)
-        +wyswietl()
-    }
-
-    class LicznikZycia {
-        -int wartosc
-        +odejmij()
-        +wyswietl()
-    }
-
-    class LicznikCzasu {
-        -float pozostalyCzas
-        +uruchom()
-        +odliczaj()
-        +czyKoniec() bool
-    }
-
-    Gra "1" --> "3" Poziom : zawiera
-    Gra "1" --> "1" Bohater : steruje
-    Poziom "1" *-- "*" ObiektGry : zawiera
-    Poziom "1" --> "0..1" LicznikCzasu : poziom 3
+    Gra "1" *-- "3" Poziom
+    Gra "1" *-- "1" Bohater
     Gra "1" *-- "1" LicznikPunktow
     Gra "1" *-- "1" LicznikZycia
+    Poziom "1" o-- "0..1" LicznikCzasu : poziom 3
+    Poziom "1" *-- "*" ObiektGry
 
     ObiektGry <|-- Bohater
     ObiektGry <|-- Sciana
@@ -93,14 +79,8 @@ classDiagram
     ObiektGry <|-- Klucz
     ObiektGry <|-- Drzwi
     ObiektGry <|-- Przeszkoda
-    ObiektGry <|-- Przeciwnik
+    Przeszkoda <|-- Przeciwnik
 
-    Bohater ..> Moneta : zbiera
     Bohater ..> Klucz : zbiera
-    Bohater ..> Drzwi : otwiera kluczem
-    Bohater ..> Przeszkoda : traci życie
-    Bohater ..> Przeciwnik : traci życie
-    Bohater ..> Sciana : kolizja
-    Bohater --> LicznikPunktow : aktualizuje
-    Bohater --> LicznikZycia : aktualizuje
+    Bohater ..> Drzwi : otwiera
 ```
