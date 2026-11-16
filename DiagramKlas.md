@@ -3,63 +3,63 @@ classDiagram
     direction TB
 
     class Gra {
-        -int aktualnyPoziom
-        -bool czyWygrana
+        -aktualnyPoziom
+        -czyWygrana
         +rozpocznijGre()
         +zakonczGre()
         +przejdzDoNastepnegoPoziomu()
     }
 
     class Poziom {
-        -int numer
-        -int trudnosc
-        -bool maLimitCzasu
+        -numer
+        -trudnosc
+        -maLimitCzasu
         +wczytaj()
         +ukonczPoziom()
     }
 
     class LicznikPunktow {
-        -int wartosc
+        -wartosc
         +dodaj(punkty)
     }
 
     class LicznikZycia {
-        -int wartosc
+        -wartosc
         +odejmij()
     }
 
     class LicznikCzasu {
-        -float pozostalyCzas
+        -pozostalyCzas
         +uruchom()
-        +czyKoniec() bool
+        +czyKoniec()
     }
 
     class ObiektGry {
         <<abstract>>
-        #float x
-        #float y
+        #x
+        #y
         +wykryjKolizje()
     }
 
     class Bohater {
-        -int zycia
-        -int punkty
-        -bool maKlucz
+        -zycia
+        -punkty
+        -maKlucz
         +poruszaj(klawisz)
         +stracZycie()
     }
 
     class Sciana
     class Moneta {
-        -int wartosc
+        -wartosc
     }
     class Klucz
     class Drzwi {
-        -bool otwarte
+        -otwarte
         +otworz()
     }
     class Przeszkoda {
-        -float predkosc
+        -predkosc
         +poruszaj()
     }
     class Przeciwnik {
