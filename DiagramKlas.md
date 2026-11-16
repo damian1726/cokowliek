@@ -66,12 +66,12 @@ classDiagram
         +gon()
     }
 
-    Gra "1" *-- "3" Poziom
-    Gra "1" *-- "1" Bohater
-    Gra "1" *-- "1" LicznikPunktow
-    Gra "1" *-- "1" LicznikZycia
-    Poziom "1" o-- "0..1" LicznikCzasu : poziom 3
-    Poziom "1" *-- "*" ObiektGry
+    Gra *-- Poziom
+    Gra *-- Bohater
+    Gra *-- LicznikPunktow
+    Gra *-- LicznikZycia
+    Poziom o-- LicznikCzasu
+    Poziom *-- ObiektGry
 
     ObiektGry <|-- Bohater
     ObiektGry <|-- Sciana
@@ -81,6 +81,6 @@ classDiagram
     ObiektGry <|-- Przeszkoda
     Przeszkoda <|-- Przeciwnik
 
-    Bohater ..> Klucz : zbiera
-    Bohater ..> Drzwi : otwiera
+    Bohater ..> Klucz
+    Bohater ..> Drzwi
 ```
