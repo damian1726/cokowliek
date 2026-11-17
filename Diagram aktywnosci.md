@@ -35,3 +35,4 @@ flowchart TD
     Ostatni -- Nie --> Nast[Przejdź do następnego poziomu] --> Load
     Ostatni -- Tak --> Wygrana([Wygrana - koniec gry])
 ```
+ 
