@@ -69,7 +69,7 @@ classDiagram
     Gra *-- Poziom
     Gra *-- Bohater
     Gra *-- LicznikPunktow
-    Gra *-- LicznikZycia
+    Gra *-- LicznikZycia 
     Poziom o-- LicznikCzasu
     Poziom *-- ObiektGry
 
