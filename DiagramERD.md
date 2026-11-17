@@ -64,5 +64,5 @@ erDiagram
         int id_przeciwnika PK
         int id_poziomu FK
         float predkosc
-    }
+    } 
 ```
